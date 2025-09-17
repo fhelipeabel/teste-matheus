@@ -4,27 +4,43 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>População Idosa — Dashboard</title>
+
+  <!-- Seu CSS local (habilita estilos do Leaflet que você colou em style.css) -->
   <link rel="stylesheet" href="/public/css/style.css" />
+
+  <!-- Leaflet JS (necessário para o mapa) -->
+  <link rel="preconnect" href="https://unpkg.com">
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" defer></script>
+
+  <!-- React + ReactDOM UMD (necessário para o app) -->
+  <script src="https://unpkg.com/react@18/umd/react.production.min.js" defer></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" defer></script>
+
+  <!-- Recharts UMD (gráficos) -->
+  <script src="https://unpkg.com/recharts/umd/Recharts.min.js" defer></script>
+
+  <!-- Observação: o app usa classes utilitárias (ex.: bg-white, text-gray-600).
+       Se você quiser os estilos do Tailwind, inclua o CDN abaixo OU remova essas classes no app.js.
+       <script src="https://cdn.tailwindcss.com" defer></script>
+  -->
+  <style>
+    /* Fallback mínimo para não ficar "branco" se Tailwind não estiver carregado */
+    body { margin: 0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; background:#f6f7fb; color:#111; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 16px; }
+    .card { background:#fff; border-radius:12px; box-shadow:0 1px 4px rgba(0,0,0,.08); padding:16px; }
+  </style>
 </head>
 <body>
-  <main>
-    <h1>População Idosa</h1>
-    <p id="total">Carregando…</p>
+  <main class="container">
+    <div id="root">
+      <!-- Conteúdo inicial (fallback) -->
+      <h1>População Idosa</h1>
+      <p>Carregando…</p>
+    </div>
+    <noscript>Ative o JavaScript para ver o dashboard.</noscript>
   </main>
 
-  <script defer>
-    fetch('/api/stats')
-      .then(r => r.json())
-      .then(j => {
-        if (j.ok) {
-          document.getElementById('total').textContent = 'Total de idosos: ' + j.total.toLocaleString('pt-BR');
-        } else {
-          document.getElementById('total').textContent = 'Erro ao carregar.';
-        }
-      })
-      .catch(() => {
-        document.getElementById('total').textContent = 'Falha de conexão.';
-      });
-  </script>
+  <!-- Seu app React -->
+  <script src="/public/js/app.js" defer></script>
 </body>
 </html>
