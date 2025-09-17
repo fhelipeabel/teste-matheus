@@ -1,31 +1,30 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>População Idosa no Brasil – Dashboard</title>
-  <!-- Tailwind via CDN for quick styling -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Recharts library (UMD) -->
-  <script src="/public/js/app.js" defer></script>
-  <!-- React and ReactDOM (UMD builds) -->
-  <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
-  <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
-  <!-- Leaflet CSS/JS -->
-  <link
-    rel="stylesheet"
-    href="/public/css/style.css"
-    integrity="sha256-Dv3xqtvNJprdgB1z2wO6nHR+8coBd1ZLRJCVvfZdIGs="
-    crossorigin=""/>
-  <script
-    src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
-    integrity="sha256-pvwvUbfCehYO1y6CE1OM9pADyJE0E620Xex0v9Nn+PE="
-    crossorigin=""
-  ></script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>População Idosa — Dashboard</title>
+  <link rel="stylesheet" href="/public/css/style.css" />
 </head>
-<body class="bg-gray-50 text-gray-800">
-  <div id="root"></div>
-  <!-- Main application script -->
-  <script src="/app.js"></script>
+<body>
+  <main>
+    <h1>População Idosa</h1>
+    <p id="total">Carregando…</p>
+  </main>
+
+  <script defer>
+    fetch('/api/stats')
+      .then(r => r.json())
+      .then(j => {
+        if (j.ok) {
+          document.getElementById('total').textContent = 'Total de idosos: ' + j.total.toLocaleString('pt-BR');
+        } else {
+          document.getElementById('total').textContent = 'Erro ao carregar.';
+        }
+      })
+      .catch(() => {
+        document.getElementById('total').textContent = 'Falha de conexão.';
+      });
+  </script>
 </body>
 </html>
