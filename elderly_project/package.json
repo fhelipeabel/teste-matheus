@@ -1,1 +1,13 @@
+{
+  "name": "elderly_project",
+  "private": true,
+  "version": "1.0.0",
+  "type": "commonjs",
+  "scripts": {
+    "build": "echo \"no build step\""
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
 
