@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>População Idosa no Brasil – Dashboard</title>
+  <!-- Tailwind via CDN for quick styling -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Recharts library (UMD) -->
+  <script src="https://unpkg.com/recharts/umd/Recharts.min.js"></script>
+  <!-- React and ReactDOM (UMD builds) -->
+  <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+  <!-- Leaflet CSS/JS -->
+  <link
+    rel="stylesheet"
+    href=".style.css"
+    integrity="sha256-Dv3xqtvNJprdgB1z2wO6nHR+8coBd1ZLRJCVvfZdIGs="
+    crossorigin=""
+  />
+  <script
+    src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-pvwvUbfCehYO1y6CE1OM9pADyJE0E620Xex0v9Nn+PE="
+    crossorigin=""
+  ></script>
+</head>
+<body class="bg-gray-50 text-gray-800">
+  <div id="root"></div>
+  <!-- Main application script -->
+  <script src="/app.js"></script>
+</body>
+</html>
